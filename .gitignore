@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/generated/prisma
+
+# Generated Prisma client
+/lib/generated/
+
+# User uploaded photos (local only)
+/public/uploads/
+
+# Claude Code session files
+/.claude/
