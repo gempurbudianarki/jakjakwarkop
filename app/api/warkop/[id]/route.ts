@@ -17,7 +17,7 @@ export async function GET(
     }
 
     const warkop = await prisma.warkop.findUnique({
-      where: { id, isActive: true },
+      where: { id },
       include: {
         _count: {
           select: {
@@ -28,7 +28,7 @@ export async function GET(
       },
     });
 
-    if (!warkop) {
+    if (!warkop || !warkop.isActive) {
       return NextResponse.json(
         { error: "Warkop tidak ditemukan atau tidak aktif" },
         { status: 404 }

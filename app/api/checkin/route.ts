@@ -64,10 +64,10 @@ export async function POST(request: Request) {
 
     // Verify warkop exists
     const warkop = await prisma.warkop.findUnique({
-      where: { id: warkopId, isActive: true },
+      where: { id: warkopId },
     });
 
-    if (!warkop) {
+    if (!warkop || !warkop.isActive) {
       return NextResponse.json(
         { error: "Warkop tidak ditemukan atau tidak aktif" },
         { status: 404 }
